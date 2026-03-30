@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Boston Crime Data Story</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+
+<h1>Boston Shootings Data Story</h1>
+
+<h2>Chart 1: Shootings by Hour</h2>
+<div id="chart1"></div>
+
+<h2>Chart 2: Top Crimes During Peak Hours (8PM–11PM)</h2>
+<div id="chart2"></div>
+
+<script>
+
+
+// Hour vs shootings
+const hours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
+const counts = [186, 142, 111, 85, 57, 45, 32, 25, 12, 24, 21, 32, 31, 18, 32, 44, 44, 66, 67, 87, 123, 147, 150, 156];
+
+// Top crimes at peak hours
+const crimes = [
+  "INVESTIGATE PROPERTY",
+  "ASSAULT - AGGRAVATED",
+  "BALLISTICS EVIDENCE/FOUND",
+  "VANDALISM",
+  "INVESTIGATE PERSON"
+];
+
+const crimeCounts = [191, 127, 97, 60, 34];
+
+Plotly.newPlot("chart1", [{
+  x: hours,
+  y: counts,
+  mode: "lines+markers",
+  type: "scatter"
+}], {
+  title: "Shootings by Hour of Day",
+  xaxis: { title: "Hour (0–23)" },
+  yaxis: { title: "Number of Shootings" }
+});
+
+Plotly.newPlot("chart2", [{
+  x: crimes,
+  y: crimeCounts,
+  type: "bar"
+}], {
+  title: "Top Crimes During Peak Hours (8PM–11PM)",
+  xaxis: { title: "Crime Type" },
+  yaxis: { title: "Count" }
+});
+
+</script>
+
+</body>
+</html>
